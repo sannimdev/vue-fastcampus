@@ -4,7 +4,7 @@
 
 ## 준비물
 
-1. 크롬 브라우저
+1. 크롬 브라우저 최신버전
    1-1. vue.js devtools
 
 2. vscode
@@ -13,5 +13,5 @@
    2-3. live server
    2-4. night owl (선택, 코드 하이라이팅)
 
-3. node
+3. node v10 이상
    3-1. npm
