@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app">
+      <!-- <app-header v-bind:프롭스 속성 이름="상위 컴포넌트의 데이터" /> -->
+      <app-header v-bind:title="str" />
+    </div>
+    <!-- development version, includes helpful console warnings -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+      new Vue({
+        //인스턴스 옵션
+        el: "#app",
+        data: {
+          str: "프롭스 문자열",
+        },
+        components: {
+          //컴포넌트 이름: 컴포넌트 내용
+          "app-header": {
+            props: ["title"],
+            template: "<h1>{{title}}</h1>",
+          },
+        },
+      });
+    </script>
+  </body>
+</html>
