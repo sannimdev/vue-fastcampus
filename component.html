@@ -10,7 +10,10 @@
       <!-- <app-header v-bind:프롭스 속성 이름="상위 컴포넌트의 데이터" /> -->
       <app-header v-bind:title="str"></app-header>
       <!-- <app-contents v-on:하위 컴포넌트에서 발생한 이벤트 이름="상위 컴포넌트의 메서드 이름"></app-contents> -->
-      <app-contents v-on:change="changeStr"></app-contents>
+      <!-- 뷰 방식 -->
+      <!-- <app-contents v-on:change="changeStr"></app-contents> -->
+      <!-- 리액트 방식 -->
+      <app-contents v-on:change="changeStr" v-bind:on-change="changeStr"></app-contents>
     </div>
     <!-- development version, includes helpful console warnings -->
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
@@ -34,7 +37,8 @@
             template: "<h1>{{title}}</h1>",
           },
           "app-contents": {
-            template: '<main>콘텐츠<button v-on:click="change">메시지 변경</button></main>',
+            props: ["onChange"], //html에서는 대소문자 구분이 없으므로 스네이크, javascript에서는 캐멀케이스로 작성하기
+            template: '<main>콘텐츠<button v-on:click="onChange">메시지 변경</button></main>',
             methods: {
               change() {
                 //AppContents에서 Root로 이벤트를 올린다
