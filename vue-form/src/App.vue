@@ -9,19 +9,33 @@
         <label for="password">PW:</label>
         <input id="password" type="password" v-model="password" />
       </div>
-      <button type="submit">로그인</button>
+      <button type="submit" v-bind:disabled="!isUsernameValid">로그인</button>
     </form>
+    <p v-if="isError">올바르지 않은 아이디입니다.</p>
+    <p v-if="isUsernameValid">이메일 형식이 맞습니다.</p>
   </div>
 </template>
 
 <script>
+function validateEmail(email) {
+  //from https://stackoverflow.com/questions/46155/how-to-validate-an-email-address-in-javascript
+  const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  return re.test(String(email).toLowerCase());
+}
+
 export default {
   data() {
     return {
       //React의 State
       username: "",
       password: "",
+      isError: false,
     };
+  },
+  computed: {
+    isUsernameValid() {
+      return validateEmail(this.username);
+    },
   },
   methods: {
     //ES6+ 객체를 생성할 때 향상된 문법
@@ -29,6 +43,8 @@ export default {
       // event.preventDefault();
       // console.log("submitted");
       console.log("로그인");
+
+      //무조건 에러 발생시키기
       this.initForm();
     },
     initForm() {
