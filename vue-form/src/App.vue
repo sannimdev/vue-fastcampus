@@ -19,10 +19,14 @@
     </form>
     <p v-if="isError">올바르지 않은 아이디입니다.</p>
     <p v-if="isUsernameValid">이메일 형식이 맞습니다.</p>
+    <toast-popup></toast-popup>
+    <!-- <ToastPopup></ToastPopup> -->
   </div>
 </template>
 
 <script>
+import ToastPopup from "@/components/ToastPopup.vue";
+
 function validateEmail(email) {
   //from https://stackoverflow.com/questions/46155/how-to-validate-an-email-address-in-javascript
   const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -30,12 +34,16 @@ function validateEmail(email) {
 }
 
 export default {
+  components: {
+    ToastPopup,
+  },
   data() {
     return {
       //React의 State
       username: "",
       password: "",
       isError: false,
+      isSuccess: false,
     };
   },
   computed: {
@@ -49,9 +57,9 @@ export default {
       event.preventDefault();
       // console.log("submitted");
       console.log("로그인");
-
+      this.isSuccess = true;
       //무조건 에러 발생시키기
-      this.isError = true;
+      // this.isError = true;
       // this.initForm();
     },
     initForm() {
