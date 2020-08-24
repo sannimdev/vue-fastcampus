@@ -15,10 +15,18 @@ npm install -g @vue/cli
 
 ## 2. Vue CLI 사용하기
 
-2-1. vue를 이용하여 프로젝트 만들기
+### 2-1. Vue CLI를 이용하여 프로젝트 만들기
+
+2-1-1. vue를 이용하여 프로젝트 만들기
 
 ```
 vue create vue-form
 ```
 
-2-2. default 옵션 선택 후 생성하기
+2-1-2. default 옵션 선택 후 생성하기
+
+### 2-2. Vue CLI를 이용하여 서버 실행하기
+
+```
+npm run serve
+```
