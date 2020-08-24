@@ -1,8 +1,9 @@
 <template>
-  <div class="toast">토스트 팝업입니다.</div>
+  <div class="toast" v-bind:class="{'animation':open}">로그인이 완료되었습니다.</div>
 </template>
 
 <script>
+let timer;
 export default {
   props: ["open"],
   watch: {
@@ -10,6 +11,10 @@ export default {
       // open이라는 props속성이 바뀔 때마다 동작
       if (newValue) {
         console.log("토스트 팝업 열기");
+        clearTimeout(timer);
+        timer = setTimeout(() => {
+          this.$emit("close");
+        }, 2000);
       }
     },
   },
@@ -33,7 +38,7 @@ export default {
   transition: bottom 0.2s ease-in-out;
 }
 
-.open {
+.animation {
   bottom: 5%;
 }
 </style>
