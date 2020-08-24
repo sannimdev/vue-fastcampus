@@ -8,6 +8,11 @@
    - 가장 최근에 나온 라이브러리 (2014)
    - 2-way data binding
    - Virtual DOM (리액트)
+4. Vue는 싱글 파일 컴포넌트이다.
+   - template
+   - script
+   - style
+     - scoped는 컴포넌트에만 적용되는 CSS
 
 # React와 다른 점
 
